@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Letra Black — gerador de letra caixa 3D</title>
-  <script type="module" crossorigin src="./assets/index-D6KTmu5V.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CPRFajbp.css">
+  <script type="module" crossorigin src="./assets/index-LWrk74Yr.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Di3OQm5y.css">
 </head>
 <body>
 <div id="app">
@@ -61,6 +61,7 @@
 
     <section>
       <h2><span class="n">4</span> Ajustes</h2>
+      <div id="prevEstilo" class="prevEstilo" title="Clique para ver em 3D"><img id="miniAtual" alt=""><span>Estilo atual · clique para ver em 3D</span></div>
       <label class="linha forte"><input type="checkbox" id="macico"> Letra maciça (sem miolo)</label>
       <div id="blocoOco">
         <div class="campo"><label>Fundo</label>
@@ -73,6 +74,16 @@
           </div></div>
       </div>
       <div id="campos"></div>
+      <h3 class="sub">Acabamento da frente</h3>
+      <div id="camposChanfro"></div>
+      <div id="blocoTex">
+        <div class="rot"><span>Textura da frente impressa</span></div>
+        <div id="texGrid"></div>
+        <div class="campo" id="texModoBox"><label>Tipo</label>
+          <div class="seg" id="segTex"><button data-v="baixo">Baixo-relevo</button><button data-v="relevo">Relevo</button></div></div>
+        <div id="camposTex"></div>
+      </div>
+      <p class="dica" id="dicaTex" hidden>Chanfro e textura valem na frente impressa. O acrílico é cortado liso.</p>
       <h3 class="sub">Anéis de parede</h3>
       <p class="dica">Cada anel acompanha o contorno: <b>interno</b> fica por dentro da borda e <b>externo</b> por fora. Cada um tem espessura, altura e ponto de partida próprios: a partir da base ou pendurado a partir do topo (útil para uma "cama" de acrílico).</p>
       <div id="aneis"></div>
@@ -123,5 +134,16 @@
     <div id="carregando" class="carregando" hidden>Gerando…</div>
   </main>
 </div>
+  <div id="modal3d" hidden>
+    <div class="caixa3d">
+      <div class="cab"><b id="modalTitulo"></b><button id="modalFechar" title="Fechar (Esc)">✕</button></div>
+      <div id="modalVista"></div>
+      <div class="rodape">
+        <label><input type="checkbox" id="modalGirar" checked> Girar sozinho</label>
+        <label id="modalAfastarBox">Afastar frente <input type="range" id="modalAfastar" min="0" max="40" step="1" value="0"></label>
+        <span class="dica">Arraste para girar, role para aproximar. Peça de demonstração cortada ao meio.</span>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
