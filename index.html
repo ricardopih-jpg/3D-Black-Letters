@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Letra Black — gerador de letra caixa 3D</title>
+  <script type="module" crossorigin src="./assets/index-CfJTRhpV.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Dr8OH-9I.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="marca">LETRA<b>BLACK</b><span class="versao">M1</span></div>
+    <div id="nomeArquivo" class="nome-arquivo">Nenhum arquivo</div>
+  </header>
+
+  <aside id="painel">
+    <section>
+      <h2><span class="n">1</span> Arquivo</h2>
+      <label class="drop" id="drop" for="arq">
+        <input type="file" id="arq" accept=".svg,.png,.jpg,.jpeg,.webp,image/svg+xml,image/png,image/jpeg,image/webp">
+        <strong>Clique ou arraste</strong>
+        <span>SVG, PNG, JPG ou WebP</span>
+      </label>
+      <label class="linha"><input type="checkbox" id="ignBrancas"> Ignorar formas brancas (fundo do logo)</label>
+      <div id="avisosArq" class="avisos"></div>
+
+      <div id="vetor" class="caixa" hidden>
+        <h3>Vetorização da imagem</h3>
+        <p class="dica">Veja o contorno em vermelho. Ajuste até ficar certo e só então use.</p>
+        <canvas id="prev" width="300" height="200"></canvas>
+        <div class="campo"><label>Limiar <span id="vLimiar"></span></label><input type="range" id="rLimiar" min="1" max="254" step="1"></div>
+        <div class="campo"><label>Suavização <span id="vSuav"></span></label><input type="range" id="rSuav" min="0" max="3" step="1"></div>
+        <div class="campo"><label>Remover manchas (px²) <span id="vMin"></span></label><input type="range" id="rMin" min="0" max="800" step="10"></div>
+        <div class="campo"><label>Simplificar contorno (px) <span id="vSimp"></span></label><input type="range" id="rSimp" min="0" max="4" step="0.1"></div>
+        <label class="linha"><input type="checkbox" id="rInv"> Letras claras sobre fundo escuro</label>
+        <div id="vInfo" class="dica"></div>
+        <button id="usarContorno" class="primario">Usar este contorno</button>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="n">2</span> Tamanho</h2>
+      <div class="duplo">
+        <div class="campo"><label for="tLarg">Largura (mm)</label><input type="number" id="tLarg" min="5" max="3000" step="1"></div>
+        <div class="campo"><label for="tAlt">Altura (mm)</label><input type="number" id="tAlt" min="5" max="3000" step="1"></div>
+      </div>
+      <label class="linha"><input type="checkbox" id="espelhar"> Espelhar (inverter esquerda/direita)</label>
+    </section>
+
+    <section>
+      <h2><span class="n">3</span> Estilo pronto</h2>
+      <div id="presets" class="presets"></div>
+      <div class="meus">
+        <div class="campo"><label for="meusSel">Meus presets</label>
+          <div class="linha-btn"><select id="meusSel"></select><button id="meuAplicar">Aplicar</button><button id="meuApagar" class="perigo" title="Apagar este preset">Apagar</button></div>
+        </div>
+        <div class="linha-btn"><input type="text" id="meuNome" placeholder="Nome do novo preset" maxlength="40"><button id="meuSalvar">Salvar atual</button></div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="n">4</span> Ajustes</h2>
+      <label class="linha forte"><input type="checkbox" id="macico"> Letra maciça (sem miolo)</label>
+      <div id="blocoOco">
+        <div class="campo"><label>Fundo</label>
+          <div class="seg" id="segFundo">
+            <button data-v="fechado">Fechado</button><button data-v="led">Furos de LED</button><button data-v="vazado">Vazado</button>
+          </div></div>
+        <div class="campo"><label>Frente</label>
+          <div class="seg" id="segFrente">
+            <button data-v="nenhuma">Sem frente</button><button data-v="impressa">Impressa</button><button data-v="acrilico">Acrílico</button>
+          </div></div>
+      </div>
+      <div id="campos"></div>
+    </section>
+
+    <section>
+      <h2><span class="n">5</span> Mesa de impressão <small>(opcional)</small></h2>
+      <p class="dica">Sem medidas, o app só gera as peças. Com medidas, ele distribui as peças automaticamente em mesas.</p>
+      <select id="impSel">
+        <option value="nenhuma">Sem medidas (definir depois)</option>
+        <option value="k1">Creality K1 (220 × 220 × 250 mm)</option>
+        <option value="custom">Outra impressora…</option>
+      </select>
+      <div id="impCustom" hidden>
+        <div class="dois"><label>Largura X (mm)<input type="number" id="impX" min="50" max="2000" step="1" value="220"></label>
+        <label>Profundidade Y (mm)<input type="number" id="impY" min="50" max="2000" step="1" value="220"></label></div>
+        <label>Altura Z (mm)<input type="number" id="impZ" min="20" max="2000" step="1" value="250"></label>
+      </div>
+      <div id="impDist" hidden>
+        <div class="dois"><label>Margem da borda (mm)<input type="number" id="impMargem" min="0" max="50" step="1" value="5"></label>
+        <label>Espaço entre peças (mm)<input type="number" id="impEsp" min="0" max="50" step="1" value="4"></label></div>
+        <div id="mesasInfo" class="info"></div>
+        <div id="mesasPrev"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="n">6</span> Exportar</h2>
+      <button id="baixarZip" class="primario" disabled>Baixar pacote completo (ZIP)</button>
+      <button id="baixarDxf" disabled>Baixar só o DXF de corte</button>
+      <p class="dica">O ZIP traz STL por letra, as mesas de impressão já arrumadas, o DXF e os parâmetros usados.</p>
+      <div id="msgExport" class="dica"></div>
+    </section>
+    <footer>Letra Black · uso interno da Gráfica Black · tudo é gerado no seu navegador, nenhum arquivo sai do computador.</footer>
+  </aside>
+
+  <main>
+    <div id="vista"></div>
+    <div class="barra-vista">
+      <label class="linha"><input type="checkbox" id="verFrente" checked> Mostrar frente</label>
+      <label class="linha">Afastar frente <input type="range" id="explodir" min="0" max="60" step="1" value="0"></label>
+      <button id="reenquadrar">Enquadrar</button>
+      <button id="vistaCima">Vista de cima</button>
+    </div>
+    <div id="status" class="status">Carregue um SVG ou PNG para começar.</div>
+    <div id="avisos" class="avisos"></div>
+    <div id="carregando" class="carregando" hidden>Gerando…</div>
+  </main>
+</div>
+</body>
+</html>

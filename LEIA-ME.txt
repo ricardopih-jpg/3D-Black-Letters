@@ -1,0 +1,2 @@
+Letra Black (M1). Site estatico: nao abre com duplo clique.
+No Terminal, dentro desta pasta: python3 -m http.server 8000  e acesse http://localhost:8000
