@@ -1,5 +1,5 @@
-LETRA BLACK - atualização: letras mais difíceis
+LETRA BLACK - atualização
 Suba o conteúdo desta pasta em https://github.com/ricardopih-jpg/3D-Black-Letters/upload/main
-(index.html, pasta assets e este arquivo), substituindo os antigos.
-Novidades (seção 5 - Recursos avançados): fundo inclinado, vazado paramétrico,
-canal de neon + furo de fio, divisão de letra grande com encaixe rabo de andorinha.
+(index.html e pasta assets), substituindo os antigos.
+Novidades: estilo Aço galvanizado (vazado, com aba), STL único com todas as letras,
+entrada de PDF vetorial e curvas suaves para PNG/JPG.

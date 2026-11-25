@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Letra Black — gerador de letra caixa 3D</title>
-  <script type="module" crossorigin src="./assets/index-BBl2Gf9Q.js"></script>
+  <script type="module" crossorigin src="./assets/index-Dx3fvEPc.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-oxlreWQa.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
     <section>
       <h2><span class="n">1</span> Arquivo</h2>
       <label class="drop" id="drop" for="arq">
-        <input type="file" id="arq" accept=".svg,.png,.jpg,.jpeg,.webp,image/svg+xml,image/png,image/jpeg,image/webp">
+        <input type="file" id="arq" accept=".svg,.pdf,application/pdf,.png,.jpg,.jpeg,.webp,image/svg+xml,image/png,image/jpeg,image/webp">
         <strong>Clique ou arraste</strong>
         <span>SVG, PNG, JPG ou WebP</span>
       </label>
@@ -33,6 +33,7 @@
         <div class="campo"><label>Suavização <span id="vSuav"></span></label><input type="range" id="rSuav" min="0" max="3" step="1"></div>
         <div class="campo"><label>Remover manchas (px²) <span id="vMin"></span></label><input type="range" id="rMin" min="0" max="800" step="10"></div>
         <div class="campo"><label>Simplificar contorno (px) <span id="vSimp"></span></label><input type="range" id="rSimp" min="0" max="4" step="0.1"></div>
+        <label class="linha"><input type="checkbox" id="rCurvas" checked> Curvas suaves (tira o serrilhado dos pixels)</label>
         <label class="linha"><input type="checkbox" id="rInv"> Letras claras sobre fundo escuro</label>
         <div id="vInfo" class="dica"></div>
         <button id="usarContorno" class="primario">Usar este contorno</button>
@@ -114,6 +115,14 @@
       </div>
 
       <div class="rec">
+        <label class="sw"><input type="checkbox" data-p="galv"> <b>Aço galvanizado (vazado, com aba)</b></label>
+        <div data-mostrar="galv">
+          <p class="dica">Só parede + aba de encaixe na frente; sem fundo e sem frente. A profundidade é a "Altura" dos ajustes. O DXF traz o acrílico que entra por trás.</p>
+          <div id="camposGalv"></div>
+        </div>
+      </div>
+
+      <div class="rec">
         <label class="sw"><input type="checkbox" data-p="neon"> <b>Canal para neon / fita de LED</b></label>
         <div data-mostrar="neon">
           <p class="dica">Canal em volta da frente impressa e furo de passagem do fio no fundo.</p>
@@ -157,8 +166,9 @@
     <section>
       <h2><span class="n">7</span> Exportar</h2>
       <button id="baixarZip" class="primario" disabled>Baixar pacote completo (ZIP)</button>
+      <button id="baixarStl" disabled>Baixar STL único (todas as letras juntas)</button>
       <button id="baixarDxf" disabled>Baixar só o DXF de corte</button>
-      <p class="dica">O ZIP traz STL por letra, as mesas de impressão já arrumadas, o DXF e os parâmetros usados.</p>
+      <p class="dica">O ZIP traz STL por letra, o STL único com o logo montado, as mesas de impressão já arrumadas, o DXF e os parâmetros usados.</p>
       <div id="msgExport" class="dica"></div>
     </section>
     <footer>Letra Black · uso interno da Gráfica Black · tudo é gerado no seu navegador, nenhum arquivo sai do computador.</footer>
@@ -172,7 +182,7 @@
       <button id="reenquadrar">Enquadrar</button>
       <button id="vistaCima">Vista de cima</button>
     </div>
-    <div id="status" class="status">Carregue um SVG ou PNG para começar.</div>
+    <div id="status" class="status">Carregue um SVG, PDF ou PNG para começar.</div>
     <div id="avisos" class="avisos"></div>
     <div id="carregando" class="carregando" hidden>Gerando…</div>
   </main>
