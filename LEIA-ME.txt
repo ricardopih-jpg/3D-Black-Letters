@@ -1,2 +1,5 @@
-Letra Black (M1). Site estatico: nao abre com duplo clique.
-No Terminal, dentro desta pasta: python3 -m http.server 8000  e acesse http://localhost:8000
+LETRA BLACK - atualização: letras mais difíceis
+Suba o conteúdo desta pasta em https://github.com/ricardopih-jpg/3D-Black-Letters/upload/main
+(index.html, pasta assets e este arquivo), substituindo os antigos.
+Novidades (seção 5 - Recursos avançados): fundo inclinado, vazado paramétrico,
+canal de neon + furo de fio, divisão de letra grande com encaixe rabo de andorinha.

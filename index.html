@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Letra Black — gerador de letra caixa 3D</title>
-  <script type="module" crossorigin src="./assets/index-LWrk74Yr.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Di3OQm5y.css">
+  <script type="module" crossorigin src="./assets/index-BBl2Gf9Q.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-oxlreWQa.css">
 </head>
 <body>
 <div id="app">
@@ -90,8 +90,51 @@
       <button id="addAnel" class="btn-sec">+ Adicionar anel</button>
     </section>
 
+    <section id="avancados">
+      <h2><span class="n">5</span> Recursos avançados</h2>
+
+      <div class="rec">
+        <label class="sw"><input type="checkbox" data-p="inclinar"> <b>Fundo inclinado</b></label>
+        <div data-mostrar="inclinar">
+          <p class="dica">O fundo ganha caimento e a frente continua reta. Imprima o corpo virado, com a borda de cima na mesa.</p>
+          <div id="camposInc"></div>
+          <label class="sel">Lado mais alto da peça
+            <select data-p="inclLado"><option value="topo">Topo</option><option value="base">Base (embaixo)</option><option value="esq">Esquerda</option><option value="dir">Direita</option></select></label>
+        </div>
+      </div>
+
+      <div class="rec">
+        <label class="sel"><b>Vazado paramétrico</b>
+          <select data-p="perfAlvo"><option value="nenhum">Desligado</option><option value="fundo">Furos no fundo</option><option value="frente">Furos na frente</option><option value="ambos">Fundo e frente</option></select></label>
+        <div id="blocoPerf" hidden>
+          <p class="dica">Escolha o padrão dos furos. Na frente de acrílico os furos também vão para o DXF de corte.</p>
+          <div id="perfGrid"></div>
+          <div id="camposPerf"></div>
+        </div>
+      </div>
+
+      <div class="rec">
+        <label class="sw"><input type="checkbox" data-p="neon"> <b>Canal para neon / fita de LED</b></label>
+        <div data-mostrar="neon">
+          <p class="dica">Canal em volta da frente impressa e furo de passagem do fio no fundo.</p>
+          <div id="camposNeon"></div>
+        </div>
+      </div>
+
+      <div class="rec">
+        <label class="sw"><input type="checkbox" data-p="dividir"> <b>Dividir letras grandes</b></label>
+        <div data-mostrar="dividir">
+          <p class="dica">Letras maiores que o limite são cortadas em peças que se encaixam. Cada peça sai como uma peça independente nas mesas.</p>
+          <div id="camposDiv"></div>
+          <label class="sel">Encaixe
+            <select data-p="divEncaixe"><option value="rabo">Rabo de andorinha</option><option value="reto">Só corte reto</option></select></label>
+          <button id="usarMesa" class="btn-sec" type="button">Usar as medidas da mesa como limite</button>
+        </div>
+      </div>
+    </section>
+
     <section>
-      <h2><span class="n">5</span> Mesa de impressão <small>(opcional)</small></h2>
+      <h2><span class="n">6</span> Mesa de impressão <small>(opcional)</small></h2>
       <p class="dica">Sem medidas, o app só gera as peças. Com medidas, ele distribui as peças automaticamente em mesas.</p>
       <select id="impSel">
         <option value="nenhuma">Sem medidas (definir depois)</option>
@@ -112,7 +155,7 @@
     </section>
 
     <section>
-      <h2><span class="n">6</span> Exportar</h2>
+      <h2><span class="n">7</span> Exportar</h2>
       <button id="baixarZip" class="primario" disabled>Baixar pacote completo (ZIP)</button>
       <button id="baixarDxf" disabled>Baixar só o DXF de corte</button>
       <p class="dica">O ZIP traz STL por letra, as mesas de impressão já arrumadas, o DXF e os parâmetros usados.</p>
