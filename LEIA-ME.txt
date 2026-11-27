@@ -1,5 +1,3 @@
-LETRA BLACK - atualização
+LETRA BLACK - atualização: digitar texto com fontes
 Suba o conteúdo desta pasta em https://github.com/ricardopih-jpg/3D-Black-Letters/upload/main
 (index.html e pasta assets), substituindo os antigos.
-Novidades: estilo Aço galvanizado (vazado, com aba), STL único com todas as letras,
-entrada de PDF vetorial e curvas suaves para PNG/JPG.

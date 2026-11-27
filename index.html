@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Letra Black — gerador de letra caixa 3D</title>
-  <script type="module" crossorigin src="./assets/index-Dx3fvEPc.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-oxlreWQa.css">
+  <script type="module" crossorigin src="./assets/index-D5oUGX7e.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-FBun25EG.css">
 </head>
 <body>
 <div id="app">
@@ -16,13 +16,22 @@
 
   <aside id="painel">
     <section>
-      <h2><span class="n">1</span> Arquivo</h2>
+      <h2><span class="n">1</span> Arquivo ou texto</h2>
+      <div class="seg" id="segOrigem"><button data-v="arquivo" class="on">Enviar arquivo</button><button data-v="texto">Digitar texto</button></div>
+      <div id="blocoTexto" class="caixa" hidden>
+        <div class="campo"><label for="txtConteudo">Texto (Enter = nova linha)</label><textarea id="txtConteudo" rows="2" spellcheck="false">Gráfica Black</textarea></div>
+        <div class="campo"><label for="txtFonte">Fonte</label><select id="txtFonte"></select></div>
+        <div class="campo"><label>Altura das letras maiúsculas (mm) <span id="vTxtAlt"></span></label><input type="number" id="txtAltura" min="10" max="1500" step="5" value="100"></div>
+        <div class="campo"><label>Espaço entre letras <span id="vTxtEsp"></span></label><input type="range" id="txtEsp" min="-0.05" max="0.4" step="0.01" value="0"></div>
+        <div class="campo"><label>Espaço entre linhas <span id="vTxtEnt"></span></label><input type="range" id="txtEnt" min="0.8" max="2" step="0.05" value="1.15"></div>
+        <div class="dica">Depois de digitar, ainda dá para mudar a largura/altura final na seção 2. Todas as fontes são livres para uso comercial.</div>
+      </div>
       <label class="drop" id="drop" for="arq">
         <input type="file" id="arq" accept=".svg,.pdf,application/pdf,.png,.jpg,.jpeg,.webp,image/svg+xml,image/png,image/jpeg,image/webp">
         <strong>Clique ou arraste</strong>
         <span>SVG, PNG, JPG ou WebP</span>
       </label>
-      <label class="linha"><input type="checkbox" id="ignBrancas"> Ignorar formas brancas (fundo do logo)</label>
+      <label class="linha" id="linhaIgn"><input type="checkbox" id="ignBrancas"> Ignorar formas brancas (fundo do logo)</label>
       <div id="avisosArq" class="avisos"></div>
 
       <div id="vetor" class="caixa" hidden>
